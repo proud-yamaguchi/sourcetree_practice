@@ -7,8 +7,6 @@ module API
     log_file.sync = true
     logger Logger.new GrapeLogging::MultiIO.new(STDOUT, log_file)
 
-    ActiveRecord::Base.logger = logger
-
     logger.formatter = GrapeLogging::Formatters::Default.new
     use GrapeLogging::Middleware::RequestLogger, { logger: logger }
 
